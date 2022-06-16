@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  AfterContentChecked,
+  AfterViewInit,
+  Component,
+  DoCheck,
+  OnInit,
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { ApplicationTemplateData } from './shared/models/appTemplateData';
 import { RouteHelpers } from './shared/models/helpers';
@@ -8,12 +14,14 @@ import { RouteHelpers } from './shared/models/helpers';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, DoCheck {
   public templateData: ApplicationTemplateData;
 
   constructor(public router: Router) {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  ngDoCheck(): void {
     this.initAppTemplateData();
   }
 
@@ -26,6 +34,7 @@ export class AppComponent implements OnInit {
           { navText: 'feature', navLink: '/' },
           { navText: 'enterprice', navLink: '/' },
           { navText: 'support', navLink: '/' },
+          { navText: 'vehicle', navLink: '/vehicle' },
         ],
         bigBanner: {
           primaryText: 'vega',
