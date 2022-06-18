@@ -1,39 +1,42 @@
-import {
-  AfterContentChecked,
-  AfterViewInit,
-  Component,
-  DoCheck,
-  OnInit,
-} from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { ApplicationTemplateData } from './shared/models/appTemplateData';
-import { RouteHelpers } from './shared/models/helpers';
+import { AppState } from './store/app.state';
+import * as templateActions from './shared/state/template/template.action';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit, DoCheck {
+export class AppComponent implements OnInit {
   public templateData: ApplicationTemplateData;
 
-  constructor(public router: Router) {}
+  constructor(private router: Router, private store: Store<AppState>) {}
 
-  ngOnInit() {}
-
-  ngDoCheck(): void {
-    this.initAppTemplateData();
+  ngOnInit() {
+    this.router.events.subscribe((e) => {
+      if (e instanceof NavigationEnd) {
+        this.initAppTemplateData(e.url);
+        this.store.dispatch(
+          new templateActions.TemplateDataInit(this.templateData)
+        );
+      }
+    });
   }
 
-  public initAppTemplateData(): void {
+  public initAppTemplateData(url: string): void {
     this.templateData = {
       heading: {
         brandName: 'vega',
-        showBigBanner: RouteHelpers.isHomePage(this.router) ?? false,
+        brandImageLink: '../../../../assets/images/V-logo.svg.png',
+        brandRouteLink: '/',
+        showBigBanner: url === '/' ?? false,
         navItems: [
-          { navText: 'feature', navLink: '/' },
-          { navText: 'enterprice', navLink: '/' },
-          { navText: 'support', navLink: '/' },
+          { navText: 'feature', navLink: '/feature' },
+          { navText: 'enterprice', navLink: '/enterprice' },
+          { navText: 'support', navLink: '/support' },
           { navText: 'vehicle', navLink: '/vehicle' },
         ],
         bigBanner: {

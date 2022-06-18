@@ -1,7 +1,7 @@
-<header>
+<header *ngIf="navData">
     <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
-      <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
-        <img src="../../../../assets/images/V-logo.svg.png" width="40" height="32" class="me-2" ><title>Bootstrap</title>
+      <a href="#" routerLink="{{ navData.brandRouteLink }}" class="d-flex align-items-center text-dark text-decoration-none">
+        <img src="{{ navData.brandImageLink }}" width="40" height="32" class="me-2" ><title>Bootstrap</title>
         <span class="fs-4">Vega</span>
       </a>
 
@@ -9,7 +9,7 @@
         <a 
           *ngFor="let item of navData.navItems" 
           class="me-3 py-2 text-dark text-decoration-none text-capitalize" 
-          href="#" routerLink="{{ item.navLink }}" >{{ item.navText }}</a>
+          href="#" routerLink="{{ item.navLink }}" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact: true}">{{ item.navText }}</a>
       </nav>
     </div>
 

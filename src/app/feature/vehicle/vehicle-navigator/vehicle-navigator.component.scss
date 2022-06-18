@@ -1,0 +1,29 @@
+@import "../../../../assets/styles/colors";
+
+$gradient-1: linear-gradient(143deg, rgba(115, 46, 205, 0.534) 0%, rgba(87, 57, 209, 0.507) 21%, rgba(86, 48, 237, 0.507) 60%, rgba(70, 48, 237, 0.479) 88%);
+
+.navigation-container {
+  border-radius: 5px;
+  min-height: calc(100vh - 350px);
+  background: $gradient-1;
+  
+  &__heading{
+    padding: 20px 10px 15px;
+    position: relative;
+    &::after{
+        content: '';
+        position: absolute;
+        border-top: 1px solid $color-gray-300;
+        height: .5px;
+        width: 250px;
+    }
+  }
+
+  &__body{
+    align-items: center;
+  }
+
+  &__footer{
+    padding: 20px 10px 15px;
+  }
+}

@@ -1,0 +1,18 @@
+<div class="navigation-container">
+  <div class="navigation-container__heading">
+    <h5 class="text-white">Browse options</h5>
+  </div>
+  <div class="navigation-container__body">
+    <ul *ngIf="vehichleNavigatorMenu" class="nav-list">
+      <li
+        *ngFor="let item of vehichleNavigatorMenu.menuItems"
+        class="nav-list--item"
+        [routerLink]="item.routeLink"
+      >
+        <i class="{{ item.icon }} icon"></i>
+        <span class="label">{{ item.label }}</span>
+      </li>
+    </ul>
+  </div>
+  <!-- <div class="navigation-container__footer">Footer</div> -->
+</div>

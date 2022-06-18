@@ -1,5 +1,7 @@
 export interface Heading {
   brandName: string;
+  brandImageLink: string;
+  brandRouteLink: string;
   navItems: HeadingNavItem[];
   showBigBanner: boolean;
   bigBanner: HeadingBigBanner;
