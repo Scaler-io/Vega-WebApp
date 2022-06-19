@@ -7,7 +7,8 @@
       <li
         *ngFor="let item of vehichleNavigatorMenu.menuItems"
         class="nav-list--item"
-        [routerLink]="item.routeLink"
+        [routerLink]="[item.routeLink]"
+        routerLinkActive="active"
       >
         <i class="{{ item.icon }} icon"></i>
         <span class="label">{{ item.label }}</span>

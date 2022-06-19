@@ -1,0 +1,23 @@
+<div class="form-floating mb-3">
+  <select
+    class="form-select"
+    id="floatingSelectGrid"
+    (change)="onChange($event.target.value)"
+    (blur)="onTouched()"
+    #select
+    [ngClass]="
+      controlDir && controlDir.control && controlDir?.control?.touched
+        ? !controlDir.control.valid
+          ? 'is-invalid'
+          : 'is-valid'
+        : null
+    "
+  >
+    <option value="">Select {{ label }}</option>
+    <option *ngFor="let item of selectOptions" [value]="item.value">
+      {{ item.name }}
+    </option>
+  </select>
+  <label for="floatingSelectGrid">{{ label }}</label>
+  <ng-content></ng-content>
+</div>

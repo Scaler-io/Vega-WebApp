@@ -1,3 +1,5 @@
+@import "./assets/styles/colors";
+
 $gradient-1: linear-gradient(
   143deg,
   rgba(115, 46, 205, 0.603) 0%,
@@ -31,6 +33,17 @@ $gradient-1: linear-gradient(
     padding-left: 20px;
     z-index: 1;
     cursor: pointer;
+    text-transform: capitalize;
+
+    &.active {
+      .icon {
+        color: rgb(255, 251, 0) !important;
+      }
+      &::after {
+        opacity: 1 !important;
+        border-left: 3px solid rgb(255, 251, 0);
+      }
+    }
 
     &:not(:last-child) {
       margin-bottom: 10px;
@@ -47,16 +60,29 @@ $gradient-1: linear-gradient(
       background: $gradient-1;
       z-index: -1;
       transition: all 0.3s ease-in-out;
-      border-left: 3px solid rgb(255, 251, 0);
     }
 
     &:hover {
-      .icon{
-        color: rgb(255, 251, 0)!important;
-      }
+      // .icon {
+      //   color: rgb(255, 251, 0) !important;
+      // }
       &::after {
         opacity: 1 !important;
       }
+    }
+  }
+}
+
+.card {
+  border: none;
+  .card-header {
+    background: $color-gray-100;
+    border-bottom: none;
+    color: $color-gray-500;
+    text-transform: capitalize;
+    padding: 10px 0 5px 20px;
+    h3 {
+      font-size: 17px;
     }
   }
 }

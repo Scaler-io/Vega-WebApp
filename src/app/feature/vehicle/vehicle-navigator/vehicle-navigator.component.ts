@@ -18,8 +18,8 @@ export class VehicleNavigatorComponent implements OnInit {
   public initVehicleNavigation() {
     this.vehichleNavigatorMenu = {
       menuItems: [
-        { icon: 'fa fa-dashboard', label: 'dashboard', routeLink: '/' },
-        { icon: 'fa fa-plus', label: 'create new', routeLink: '/' },
+        { icon: 'fa fa-dashboard', label: 'dashboard', routeLink: 'dashboard' },
+        { icon: 'fa fa-plus', label: 'create new', routeLink: 'new' },
       ],
     };
   }

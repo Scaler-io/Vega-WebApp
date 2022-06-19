@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { ApplicationTemplateData } from './shared/models/appTemplateData';
 import { AppState } from './store/app.state';
@@ -37,7 +37,7 @@ export class AppComponent implements OnInit {
           { navText: 'feature', navLink: '/feature' },
           { navText: 'enterprice', navLink: '/enterprice' },
           { navText: 'support', navLink: '/support' },
-          { navText: 'vehicle', navLink: '/vehicle' },
+          { navText: 'vehicle', navLink: '/vehicle/dashboard' },
         ],
         bigBanner: {
           primaryText: 'vega',

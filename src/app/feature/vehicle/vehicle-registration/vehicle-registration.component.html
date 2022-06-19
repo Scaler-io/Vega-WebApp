@@ -1,0 +1,14 @@
+<form [formGroup]="vehicleRegistrationForm">
+  <vega-selectbox
+    formControlName="make"
+    label="Make"
+    [selectOptions]="vehicleMakeOptions"
+    (change)="onChange()"
+  ></vega-selectbox>
+
+  <vega-selectbox
+    formControlName="model"
+    label="Model"
+    [selectOptions]="vehicleModelOptions"
+  ></vega-selectbox>
+</form>
