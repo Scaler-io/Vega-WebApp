@@ -1,4 +1,5 @@
 <form [formGroup]="vehicleRegistrationForm">
+  <h5> Model<hr /></h5>
   <vega-selectbox
     formControlName="make"
     label="Make"
@@ -11,4 +12,35 @@
     label="Model"
     [selectOptions]="vehicleModelOptions"
   ></vega-selectbox>
+
+  <div class="mb-2">
+    <p class="mb-0">Is vehicle registered ?</p>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" formControlName="isRegistered" id="registered" value="true">
+      <label class="form-check-label" for="inlineRadio1">Yes</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" formControlName="isRegistered" id="notRegistered" value="false">
+      <label class="form-check-label" for="inlineRadio2">No</label>
+    </div>
+  </div>
+
+  <h5> Features<hr/></h5>
+  <div class="form-check mb-2" *ngFor="let item of vehicleFeatures">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      [value]="item.id"
+      id="faeture{{ item.id }}"
+      (change)="onFeatureSelect($event)"
+    />
+    <label class="form-check-label" for="faeture{{ item.id }}">
+      {{ item.name }}
+    </label>
+  </div>
+
+  <h5> Contact<hr/></h5>
+  <vega-textbox label="Name" formControlName="name"></vega-textbox>
+  <vega-textbox label="Phone" formControlName="phone"></vega-textbox>
+  <vega-textbox label="Email" formControlName="email"></vega-textbox>
 </form>

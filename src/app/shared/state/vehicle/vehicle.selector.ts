@@ -6,3 +6,7 @@ const vehicleState = createFeatureSelector<VehicleState>(VEHICLE_STATE_NAME);
 export const getMakes = createSelector(vehicleState, (state: VehicleState) => {
   return state.makes;
 });
+
+export const getFeatures = createSelector(vehicleState, (state: VehicleState) => {
+  return state.features;
+})

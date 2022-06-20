@@ -1,9 +1,11 @@
 import { Action } from '@ngrx/store';
-import { VegaMake } from '../../models/vehicle';
+import { VegaFeature, VegaMake } from '../../models/vehicle';
 
 export const LOAD_VEHICLE_MAKE_DATA = 'LOAD_VEHICLE_MAKE_DATA';
 export const LOAD_VEHICLE_MAKE_DATA_SUCCESS = 'LOAD_VEHICLE_MAKE_DATA_SUCCESS';
-export const LOAD_VEHICLE_MAKE_DATA_ERROR = 'LOAD_VEHICLE_MAKE_DATA_ERROR';
+
+export const LOAD_VEHICLE_FEATURE = 'LOAD_VEHICLE_FEATURE';
+export const LOAD_VEHICLE_FEATURE_SUCCESS = 'LOAD_VEHICLE_FEATURE_SUCCESS';
 
 export class LoadVehicleMakeData implements Action {
   readonly type = LOAD_VEHICLE_MAKE_DATA;
@@ -14,12 +16,18 @@ export class LoadVehicleMakeDataSuccess implements Action {
   constructor(public payload: VegaMake[]) {}
 }
 
-export class LoadVehicleMakeDataError implements Action {
-  readonly type = LOAD_VEHICLE_MAKE_DATA_ERROR;
-  constructor(public payload: any) {}
+export class LoadVehicleFeature implements Action {
+  readonly type = LOAD_VEHICLE_FEATURE;
+  constructor() {}
+}
+
+export class LoadVehicleFeatureSuccess implements Action {
+  readonly type = LOAD_VEHICLE_FEATURE_SUCCESS;
+  constructor(public payload: VegaFeature[]) {}
 }
 
 export type VehicleActions =
   | LoadVehicleMakeData
   | LoadVehicleMakeDataSuccess
-  | LoadVehicleMakeDataError;
+  | LoadVehicleFeature
+  | LoadVehicleFeatureSuccess;

@@ -6,6 +6,11 @@ export class VehicleFormHelper extends BaseFormHelper {
     return this.fb.group({
       make: ['', [Validators.required]],
       model: ['', [Validators.required]],
+      isRegistered: ['', [Validators.required]],
+      features: this.fb.array([], [Validators.required]),
+      name: ['', [Validators.required]],
+      phone: ['', [Validators.required]],
+      email: ['', [Validators.required]],
     });
   }
 }

@@ -13,5 +13,6 @@ export class VehicleComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(new vehicleActions.LoadVehicleMakeData());
+    this.store.dispatch(new vehicleActions.LoadVehicleFeature());
   }
 }

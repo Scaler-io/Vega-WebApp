@@ -27,3 +27,10 @@ export interface VegaModel {
   createdAt: string;
   updatedAt: string;
 }
+
+export interface VegaFeature {
+  id: string;
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+}

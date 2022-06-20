@@ -6,7 +6,7 @@ import { VehicleService } from 'src/app/core/services/vehicle.service';
 import { AppState } from 'src/app/store/app.state';
 import { VegaMake } from '../../models/vehicle';
 import * as vehicleActions from './vehicle.action';
-import { getMakes } from './vehicle.selector';
+import { getFeatures, getMakes } from './vehicle.selector';
 
 @Injectable()
 export class VehicleEffect {
@@ -19,6 +19,23 @@ export class VehicleEffect {
           return this.vehicleService.getMakes().pipe(
             map((response) => {
               return new vehicleActions.LoadVehicleMakeDataSuccess(response);
+            })
+          );
+        }
+        return of();
+      })
+    );
+  });
+
+  public loadFeatures$: Observable<Action> = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(vehicleActions.LOAD_VEHICLE_FEATURE),
+      withLatestFrom(this.store.select(getFeatures)),
+      switchMap(([actions, features]) => {
+        if (features === null) {
+          return this.vehicleService.getFeatures().pipe(
+            map((features) => {
+              return new vehicleActions.LoadVehicleFeatureSuccess(features);
             })
           );
         }
